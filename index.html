@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wormhole: Echoes of the Lost Crew</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="hud">
+      <div class="chip">Crew: <span id="crewStatus">5 alive</span></div>
+      <div class="chip">Room: <span id="roomLabel">100</span></div>
+      <div class="chip">Memory: <span id="memoryLabel">0%</span></div>
+    </div>
+
+    <main class="game-shell">
+      <header>
+        <p class="eyebrow">Interdimensional Mission Log</p>
+        <h1>Wormhole: Echoes of the Lost Crew</h1>
+      </header>
+
+      <section id="story" class="story" aria-live="polite"></section>
+      <section id="choices" class="choices" aria-label="Game choices"></section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
