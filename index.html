@@ -3,32 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wormhole: Echoes of the Lost Crew</title>
+    <title>Wormhole: Lethal Company Style</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="hud">
-      <div class="chip">Health: <span id="healthLabel">100</span></div>
-      <div class="chip">Oxygen: <span id="oxygenLabel">100</span></div>
-      <div class="chip">Memory: <span id="memoryLabel">0%</span></div>
-      <div class="chip">Crew: <span id="crewStatus">5 alive</span></div>
-      <div class="chip">Room: <span id="roomLabel">100</span></div>
-      <div class="chip">Inventory: <span id="inventoryLabel">Empty</span></div>
+      <div class="stat">Health <span id="healthValue">100</span></div>
+      <div class="stat">Oxygen <span id="oxygenValue">100</span></div>
+      <div class="stat">Stamina <span id="staminaValue">100</span></div>
+      <div class="stat">Room <span id="roomValue">100</span></div>
+      <div class="stat">Objective <span id="objectiveValue">Find the lever</span></div>
     </div>
 
-    <main class="game-shell">
-      <header>
-        <p class="eyebrow">Interdimensional Mission Log</p>
-        <h1>Wormhole: Echoes of the Lost Crew</h1>
-        <div class="header-actions">
-          <button id="saveBtn" class="mini-btn">Save progress</button>
-          <button id="restartBtn" class="mini-btn danger">Restart run</button>
-        </div>
-      </header>
+    <canvas id="gameCanvas" width="960" height="540"></canvas>
 
-      <section id="story" class="story" aria-live="polite"></section>
-      <section id="choices" class="choices" aria-label="Game choices"></section>
-    </main>
+    <div id="messageBox" class="message-box hidden"></div>
 
     <script src="script.js"></script>
   </body>

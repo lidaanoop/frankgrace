@@ -1,26 +1,25 @@
-# Wormhole: Echoes of the Lost Crew
+# Wormhole: Lethal Company-inspired walking survival
 
-A browser-based sci-fi survival adventure inspired by your alternate-dimensional story.
+This is a browser survival game inspired by Lethal Company-style walking exploration.
 
-## Play locally
+## Controls
 
-1. Open a terminal in the repo folder.
+- W, A, S, D = move
+- Shift = sprint
+- E = interact with lever, curtains, doors, and objects
+
+## How to play
+
+1. Open a terminal in the repository folder.
 2. Run:
    `python -m http.server 8000`
-3. Open in your browser:
+3. Open:
    `http://localhost:8000`
 
-## Included features
-
-- Story-driven progression through multiple impossible rooms
-- Player health and oxygen meters
-- Inventory system
-- Memory and crew status tracking
-- Save-progress support using browser localStorage
-- Horror atmosphere with dynamic choices and chase sequences
+You will walk around the ship, avoid the shadow, interact with objects in each room, and progress through the wormhole sequence.
 
 ## Files
 
-- `index.html` — game shell and HUD
-- `style.css` — sci-fi styling and interface
-- `script.js` — room logic, inventory, save system, and endings
+- `index.html` — HUD and canvas shell
+- `style.css` — sci-fi interface styling
+- `script.js` — walking gameplay, enemy AI, room logic
