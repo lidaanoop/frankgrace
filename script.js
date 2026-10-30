@@ -1237,8 +1237,6 @@ function interact() {
   const target = findTarget();
   if (!target) return;
 
-  const p = state.player;
-
   if (target.type === 'lever') {
     state.progress['100'] = true;
     state.inventory.push('lever');
@@ -1299,8 +1297,6 @@ function interact() {
       showMessage('Exit opened. Moving on.');
     }
   }
-
-  void p;
 }
 
 /* ================================================================== */
@@ -1402,7 +1398,7 @@ function updateRoomState(dt) {
   }
 }
 
-function updateCamera(t) {
+function updateCamera(t, dt) {
   const p = state.player;
   const bob = state.moving
     ? Math.sin(playerAnim.phase * 2) * (state.sprinting ? 0.075 : 0.05)
@@ -1421,12 +1417,19 @@ function updateCamera(t) {
   camera.rotation.y = p.yaw;
   camera.rotation.z = sway * 0.45;
 
+  // Sprint widens the view for a speed rush.
+  const targetFov = state.sprinting ? 82 : 75;
+  if (Math.abs(camera.fov - targetFov) > 0.05) {
+    camera.fov += (targetFov - camera.fov) * Math.min(1, dt * 6);
+    camera.updateProjectionMatrix();
+  }
+
   // Hands sway with the stride.
   hands.position.set(sway * 0.05, Math.sin(playerAnim.phase * 2) * 0.014, 0);
   hands.rotation.z = sway * 0.1;
 
   // Body follows the player on the ground plane (yaw only) so the legs swing below you.
-  bodyGroup.position.set(p.x, 0, p.z);
+  bodyGroup.position.set(p.x - Math.sin(p.yaw) * 0.3, 0, p.z - Math.cos(p.yaw) * 0.3);
   bodyGroup.rotation.y = p.yaw;
 
   const swing = state.moving ? Math.sin(playerAnim.phase) * (state.sprinting ? 0.95 : 0.6) : 0;
@@ -1473,7 +1476,7 @@ function update(dt, t) {
 
   if (fx.shake > 0) fx.shake = Math.max(0, fx.shake - dt * 4.5);
 
-  updateCamera(t);
+  updateCamera(t, dt);
   updateHud();
 }
 
@@ -1498,4 +1501,4 @@ showMessage('You are inside the suit. Walk with WASD, look with the mouse.');
 requestAnimationFrame(frame);
 
 /* Handy for debugging from the console. */
-window.__game = { state, scene, camera, renderer, loadRoom, props, spawnBurst };
+window.__game = { state, scene, camera, renderer, loadRoom, props, spawnBurst, bodyGroup, hands };

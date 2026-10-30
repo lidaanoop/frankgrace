@@ -1,12 +1,14 @@
-# Wormhole: Lethal Company-inspired walking survival
+# Wormhole: Lethal Company-inspired first-person survival
 
-This is a browser survival game inspired by Lethal Company-style walking exploration.
+A first-person 3D survival game: you are **inside the suit**, walking the corridors with a
+flashlight in hand. Built with three.js (vendored locally, no network needed).
 
 ## Controls
 
-- W, A, S, D = move
-- Shift = sprint
-- E = interact with lever, curtains, doors, and objects
+- Mouse = look around (click the view once to capture the mouse, `ESC` releases it)
+- W, A, S, D = walk
+- Shift = sprint (wider FOV + afterimage trail)
+- E = interact with the lever, curtain, eye, code books, exits and the wormhole
 
 ## How to play
 
@@ -16,20 +18,28 @@ This is a browser survival game inspired by Lethal Company-style walking explora
 3. Open:
    `http://localhost:8000`
 
-You will walk around the ship, avoid the shadow, interact with objects in each room, and progress through the wormhole sequence.
+Walk through the rooms, keep an eye on oxygen and the shadow creature, interact with each
+room's object to unseal the exit, then reforge the wormhole.
+
+## First-person body
+
+- Gloved hands holding a torch that lights the corridor (real spotlight, not a fake cone)
+- Your own legs swing beneath you — look down to see them walk
+- Head bob, stride sway and a sprint FOV kick so movement feels physical
 
 ## Visuals
 
-- Animated top-down walk cycle: swinging legs/arms, body bob, glowing boots
-- Sprint afterimage trail plus footstep spark particles
-- Neon wall trim, pulsing floor grid, rolling energy bands
-- Player flashlight cone, vignette lighting and CRT scanlines
-- Particle bursts, screen shake and colour flashes on interactions, damage and room changes
-- Pulsing beacons for props, tendrilled shadow enemy, swirling wormhole finale
-- Glowing "press E" prompt whenever you are close to an interactable
+- Real 3D rooms: instanced walls with neon crowns, textured floors and ceilings, fog
+- Emissive props with point lights and additive glow sprites (lever, curtain, eye, code, portal)
+- Spiked shadow creature that hunts you through the room
+- Swirling multi-ring wormhole finale, particle bursts, screen shake, damage flashes
+- Helmet visor vignette, CRT scanlines and animated HUD bars
 
 ## Files
 
-- `index.html` — HUD (animated stat bars) and canvas shell
-- `style.css` — sci-fi interface styling and HUD animations
-- `script.js` — walking gameplay, animation, FX, enemy AI, room logic
+- `index.html` — HUD, viewport and first-person overlays
+- `style.css` — sci-fi interface, visor and HUD animations
+- `script.js` — three.js scene, first-person controller, props, FX, room logic
+- `vendor/three.module.js` — vendored three.js r160 (MIT)
+- `legacy/` — the earlier 2D top-down build, kept for reference
+
