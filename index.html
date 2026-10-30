@@ -3,22 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wormhole: Lethal Company Style</title>
+    <title>Wormhole: First Person</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="hud">
-      <div class="stat">Health <span id="healthValue">100</span></div>
-      <div class="stat">Oxygen <span id="oxygenValue">100</span></div>
-      <div class="stat">Stamina <span id="staminaValue">100</span></div>
-      <div class="stat">Room <span id="roomValue">100</span></div>
-      <div class="stat">Objective <span id="objectiveValue">Find the lever</span></div>
+      <div class="stat meter">
+        <div class="stat-head"><span>Health</span><b id="healthValue">100</b></div>
+        <div class="bar"><i id="healthBar" class="fill hp"></i></div>
+      </div>
+      <div class="stat meter">
+        <div class="stat-head"><span>Oxygen</span><b id="oxygenValue">100</b></div>
+        <div class="bar"><i id="oxygenBar" class="fill ox"></i></div>
+      </div>
+      <div class="stat meter">
+        <div class="stat-head"><span>Stamina</span><b id="staminaValue">100</b></div>
+        <div class="bar"><i id="staminaBar" class="fill st"></i></div>
+      </div>
+      <div class="stat plain">
+        <span class="label">Room</span>
+        <span id="roomValue" class="value">100</span>
+      </div>
+      <div class="stat plain wide">
+        <span class="label">Objective</span>
+        <span id="objectiveValue" class="value">Find the lever</span>
+      </div>
     </div>
 
-    <canvas id="gameCanvas" width="960" height="540"></canvas>
+    <div class="viewport">
+      <canvas id="gameCanvas"></canvas>
+
+      <div class="visor"></div>
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+      <div id="flash" class="flash"></div>
+
+      <div class="crosshair"><i></i><i></i></div>
+
+      <div id="prompt" class="prompt hidden"><b>E</b><span id="promptText">INTERACT</span></div>
+
+      <div id="lockOverlay" class="lock-overlay">
+        <div class="lock-title">WORMHOLE</div>
+        <div class="lock-sub">Click to look around</div>
+        <div class="lock-keys">
+          <span><b>WASD</b> walk</span>
+          <span><b>SHIFT</b> sprint</span>
+          <span><b>E</b> interact</span>
+          <span><b>ESC</b> release mouse</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hint"><b>WASD</b> walk &middot; <b>SHIFT</b> sprint &middot; <b>E</b> interact &middot; <b>MOUSE</b> look</div>
 
     <div id="messageBox" class="message-box hidden"></div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
